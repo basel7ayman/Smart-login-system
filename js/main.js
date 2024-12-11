@@ -10,62 +10,84 @@ var signUpLink = document.getElementById("signUp");
 
 var signUpDiv = document.getElementById("signUpDiv");
 var signInDiv = document.getElementById("signInDiv");
-var nameDiv = document.getElementById("nameDiv")
-
+var nameDiv = document.getElementById("nameDiv");
 
 credentials = [];
 
-signUpLink.addEventListener("click" , function(){
-  signInBtn.classList.add("d-none");
-  signUpBtn.classList.remove("d-none");
-  nameDiv.classList.remove("d-none");
-  signUpDiv.classList.add("d-none");
-  signInDiv.classList.remove("d-none");
-})
+signUpLink.addEventListener("click", function () {
+	signInBtn.classList.add("d-none");
+	signUpBtn.classList.remove("d-none");
+	nameDiv.classList.remove("d-none");
+	signUpDiv.classList.add("d-none");
+	signInDiv.classList.remove("d-none");
+});
 
-signInLink.addEventListener("click" , function(){
-  signInBtn.classList.remove("d-none");
-  signUpBtn.classList.add("d-none");
-  nameDiv.classList.add("d-none");
-  signUpDiv.classList.remove("d-none");
-  signInDiv.classList.add("d-none");
-})
+signInLink.addEventListener("click", function () {
+	signInBtn.classList.remove("d-none");
+	signUpBtn.classList.add("d-none");
+	nameDiv.classList.add("d-none");
+	signUpDiv.classList.remove("d-none");
+	signInDiv.classList.add("d-none");
+});
 
-signInBtn.addEventListener("click" , function(){
-  var submitInput = {
-    emailInput: email.value,
-    passwordInput: password.value,
-  };
+signInBtn.addEventListener("click", function () {
+	let credentials = JSON.parse(localStorage.getItem("all"));
+	if (!credentials) {
+		credentials = []; 
+	}
 
-  // var spliceCredentials = [];
-  // spliceCredentials.push(credentials.)
-  credentials = JSON.parse(localStorage.getItem("all"));
+	var submitInput = {
+		emailInput: email.value,
+		passwordInput: password.value,
+	};
 
-  if(credentials.includes(submitInput) === true){
-    console.log("true");
-  }
-  else{
-    console.log("false");
+	let userExists = false;
+	for (let i = 0; i < credentials.length; i++) {
+		if (
+			credentials[i].emailInput === submitInput.emailInput &&
+			credentials[i].passwordInput === submitInput.passwordInput
+		) {
+			userExists = true;
+			break;
+		}
+	}
 
-  }
-  
-})
+	if (userExists) {
+		console.log("Successful login!");
+		clear();
+	} else {
+		console.log("Login failed: Invalid email or password.");
+		clear();
+	}
+});
 
-signUpBtn.addEventListener("click" , function(){
-  var submitInput = {
-    nameInput: userName.value,
-    emailInput: email.value,
-    passwordInput: password.value,
-  };
+signUpBtn.addEventListener("click", function () {
+	credentials = JSON.parse(localStorage.getItem("all")) || [];
 
-  credentials.push(submitInput)
-  localStorage.setItem("all", JSON.stringify(credentials));
-  clear();
+	// Input from the user
+	var submitInput = {
+		nameInput: userName.value,
+		emailInput: email.value,
+		passwordInput: password.value,
+	};
 
-})
+	var emailExists = credentials.some(
+		(credential) => credential.emailInput === submitInput.emailInput
+	);
+
+	if (emailExists) {
+		console.log("Sign-up failed: This email is already registered.");
+    clear();
+	} else {
+		credentials.push(submitInput);
+		localStorage.setItem("all", JSON.stringify(credentials));
+		console.log("Sign-up successful!");
+		clear();
+	}
+});
 
 function clear() {
-  userName.value = "";
-  email.value = "";
-  password.value = "";
+	userName.value = "";
+	email.value = "";
+	password.value = "";
 }
