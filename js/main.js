@@ -14,6 +14,8 @@ var nameDiv = document.getElementById("nameDiv");
 
 credentials = [];
 
+
+
 signUpLink.addEventListener("click", function () {
   signInBtn.classList.add("d-none");
   signUpBtn.classList.remove("d-none");
