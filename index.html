@@ -1,41 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
 
-		<link rel="stylesheet" href="./css/all.min.css" />
-		<link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
 
-		<link rel="stylesheet" href="./css/style.css" />
-	</head>
-	<body>
-		<div class="login-container w-50">
-			<h2>Smart Login System</h2>
-			<div class="mb-3 d-none" id="nameDiv">
-				<input type="text" id="name" class="form-control" placeholder="Enter your name" required />
-			</div>
-			<div class="mb-3">
-				<input type="email" id="email" class="form-control" placeholder="Enter your email" required />
-			</div>
-			<div class="mb-3">
-				<input type="password" id="password" class="form-control" placeholder="Enter your password" required />
-			</div>
-			<div class="d-grid">
-				<button type="submit" id="signInBtn" class="btn btn-primary">Login</button>
-        <button type="submit" id="signUpBtn" class="btn btn-primary d-none">Signup</button>
-			</div>
-			<div class="signup-link" id="signUpDiv">
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="login-container w-50">
+      <h2>Smart Login System</h2>
+      <div class="mb-3 d-none" id="nameDiv">
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          placeholder="Enter your name"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          placeholder="Enter your password"
+          required
+        />
+      </div>
+      <div class="d-grid">
+        <button type="submit" id="signInBtn" class="btn btn-primary">
+          Login
+        </button>
+        <button type="submit" id="signUpBtn" class="btn btn-primary d-none">
+          Signup
+        </button>
+      </div>
+      <div class="signup-link" id="signUpDiv">
         Don’t have an account? <a href="#" id="signUp">Sign Up</a>
       </div>
       <div class="signin-link d-none" id="signInDiv">
         You have an account? <a href="#" id="signIn">Sign in</a>
       </div>
-		</div>
+    </div>
 
-		<script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
 
-		<script src="./js/main.js"></script>
-	</body>
+    <script src="./js/main.js"></script>
+  </body>
 </html>
